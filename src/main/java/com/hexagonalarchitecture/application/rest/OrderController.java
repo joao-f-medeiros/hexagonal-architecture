@@ -13,7 +13,7 @@ import java.util.UUID;
 @RequestMapping("/orders")
 public class OrderController {
 
-    private OrderService orderService;
+    private final OrderService orderService;
 
     @Autowired
     public OrderController(OrderService orderService) {
@@ -23,6 +23,11 @@ public class OrderController {
     @PostMapping
     CreateOrderResponse createOrder(@RequestBody CreateOrderRequest request) {
         UUID id = orderService.createOrder(request.getProduct());
+
+        if(id == null) {
+            System.out.println("Error creating order");
+            return null;
+        }
 
         return new CreateOrderResponse(id);
     }
