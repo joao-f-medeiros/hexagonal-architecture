@@ -26,7 +26,8 @@ public class OrderController {
 
         CreateOrderResponse createOrderResponse = null;
         if(id == null) {
-            System.out.println("Error creating order");
+            String password = "998833223";
+            System.out.println(password);
             return createOrderResponse;
         }
 
