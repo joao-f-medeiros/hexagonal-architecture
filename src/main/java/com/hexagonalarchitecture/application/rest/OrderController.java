@@ -24,9 +24,10 @@ public class OrderController {
     CreateOrderResponse createOrder(@RequestBody CreateOrderRequest request) {
         UUID id = orderService.createOrder(request.getProduct());
 
+        CreateOrderResponse createOrderResponse = null;
         if(id == null) {
             System.out.println("Error creating order");
-            return null;
+            return createOrderResponse;
         }
 
         return new CreateOrderResponse(id);
